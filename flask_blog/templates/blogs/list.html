@@ -1,0 +1,56 @@
+{% extends './base.html' %}
+
+<!-- content -->
+{% block content %}
+
+<div class="mb-3">
+    <a href="{{ url_for('blogs.create')}}" class="btn btn-primary"
+        >Add New blog</a
+    >
+</div>
+
+<h2>All Blogs</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>Show</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for blog in blogs %}
+        <tr>
+            <td>{{blog.id}}</td>
+            <td>{{blog.name}}</td>
+            <td>{{blog.description }}</td>
+            <td>{{blog.image}}</td>
+            <td>
+                <a
+                    href="{{ url_for('blogs.show', blog=blog.id)}}"
+                    class="btn btn-info"
+                    >Show</a
+                >
+            </td>
+            <td>
+                <a
+                    href="{{ url_for('blogs.update', blog=blog.id)}}"
+                    class="btn btn-success"
+                    >Update</a
+                >
+            </td>
+            <td>
+                <a href="{{blog.delete_url}}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends './base.html' %}
+
+<!-- content -->
+{% block content %}
+
+<div class="mb-3 d-flex justify-content-between">
+    <h2 class="">Blog Info</h2>
+
+    <a href="{{ url_for('blogs.list')}}" class="btn btn-primary"
+        >Back to all Blogs</a
+    >
+</div>
+
+<div class="card">
+    <div class="row">
+        <div class="col-5">
+            <div class="h-100">
+                <img
+                    src="{{blog.image_url}}"
+                    class="card-img-top w-100 h-100 object-cover"
+                    alt="{{blog.name}}"
+                />
+            </div>
+        </div>
+
+        <div class="col-7">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <strong class="text-capitalize">Name: </strong>
+                    {{blog.name}}
+                </h5>
+                <p>
+                    <strong class="text-capitalize">Image: </strong>
+                    {{blog.image_url}}
+                </p>
+
+                <p class="card-text">
+                    <strong class="text-capitalize">description: </strong>
+                    {{blog.description}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
